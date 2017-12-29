@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
       user = self.create!(
-        name: auth_hash["name"],
-        email: auth_hash["extra"]["raw_info"]["email"]
+        email: auth_hash["extra"]["raw_info"]["email"],
+        password: SecureRandom.hex(16)
       )
       user.authentications << authentication
       return user
