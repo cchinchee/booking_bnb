@@ -1,0 +1,16 @@
+<%= render partial: '/layouts/navbar1' %>
+
+<h2><%= @listing.listing_name%></h2> <h5>Host by <em><%= link_to @listing.user.name, user_path(@listing.user.id)%></em></h5>
+
+<p><%= @listing.property_type%>, <%= @listing.country%></p>
+<p><%= @listing.description%></p>
+
+<p><%= @listing.number_of_bedrooms%> bedrooms</p>
+<p><%= @listing.number_of_beds%> beds</p>
+<p>For <%= @listing.number_of_guests%> guests</p>
+<p>House address: <%= @listing.address%></p>
+
+
+<%= link_to 'Book here'%>
+
+

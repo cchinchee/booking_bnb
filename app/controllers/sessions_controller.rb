@@ -8,7 +8,7 @@ class SessionsController < Clearance::SessionsController
         user = authentication.user
         authentication.update_token(auth_hash)
         @next = "/"
-        @notice = "Signed in!"
+        # @notice = "Signed in!"
       # else: user logs in with OAuth for the first time
       else
         user = User.create_with_auth_and_hash(authentication, auth_hash)
