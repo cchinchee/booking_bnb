@@ -16,7 +16,9 @@
 	
 	<p>What is your address? <%= text_area_tag 'listing[address]', '', placeholder: 'Address' , rows: 1, cols: 100%></p>
 	<p>Which country? <%= text_field_tag 'listing[country]', '', placeholder: 'Country' %></p>
-	<p>Tell us more about your place? <%= text_area_tag 'listing[description]', '', placeholder: 'Home\'s description' , rows: 5, cols: 100%></p>	
+	<p>Tell us more about your place? <%= text_area_tag 'listing[description]', '', placeholder: 'Home\'s description' , rows: 5, cols: 100%></p>
+
+	<p>Your showhouse's photos? <%= file_field_tag 'listing[photo]', multiple: true%></p>	
 	
 	<%= submit_tag 'Submit' %>
 <% end %>
