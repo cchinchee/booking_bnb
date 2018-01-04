@@ -3,7 +3,7 @@
 
 
 <h3>Welcome to Booking BnB!</h3>
-<% Listing.all.each do |l|%>
+<% @listings.verified.each do |l|%>
 
 <p><strong><%= link_to l.listing_name, "/listings/#{l.id}" %></strong></p>
 <p><%= l.description %></p>
@@ -12,4 +12,10 @@
 
 
 <hr>
+
+
 <% end %>
+
+<div class="text-center">
+	<%= paginate @listings %>
+</div>

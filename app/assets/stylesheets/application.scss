@@ -2,6 +2,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "main_page";
+@import "listing";
+@import "sessions";
 
 body {
 	
@@ -13,7 +15,8 @@ body {
   position: relative;
   /* width: 13em;  - apply for fixed size */
   margin: 0.2em;
-  padding: 3px 15px 3px 46px;
+  margin-bottom: 50px;
+  padding: 5px 15px 5px 46px;
   border: none;
   text-align: left;
   line-height: 34px;

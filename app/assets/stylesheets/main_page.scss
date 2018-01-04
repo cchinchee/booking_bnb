@@ -5,3 +5,77 @@
 #fb_button {
 	background: blue;
 }
+
+div#modal-header-social {
+	border: 0px;
+}
+
+hr.hr-text {
+	margin-top: 0px;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+}
+
+.modal-btn {
+	cursor: pointer;
+}
+
+#form-group-submit{
+	height: 4.5rem;
+	background-color: #FF5A5F;
+	font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif ;
+	border: 2px solid transparent;
+	font-size: 19px;
+	color:white;
+}
+
+.modal-footer-back {
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif ;
+  color:#008489;
+  font-size: 19px;
+}
+
+#modal-footer-icon {
+  margin: 7px;
+}
+
+.fa-angle-left::before {
+  padding-top: 20px;
+}
+
+#navbar-brand-logo {
+  padding-top: 8px;
+}
+

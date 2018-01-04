@@ -20,4 +20,8 @@ class SessionsController < Clearance::SessionsController
       sign_in(user)
       redirect_to "/", :notice => @notice
     end
+
+    def url_after_destroy
+        "/"
+    end 
 end    

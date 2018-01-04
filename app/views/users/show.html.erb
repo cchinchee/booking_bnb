@@ -2,12 +2,37 @@
 
 <h2>Hey, I'm <%= @user.name%></h2>
 
-<h4>Listings</h4>
+<br>
+<% if signed_in? %>
+	<% if current_user.superadmin? %>
 
+	<h4><%= link_to 'Draft list', listings_path %></h4>
 
-<% @user.listings.each do |u| %>
-
-<p><%= link_to u.listing_name, user_listing_path(@user.id,u.id) %></p>
-
+	<% end %>
 <% end %>
+
+
+<% if @user.listings.count ==0 %>
+	<h4>You have no listing.</h4>
+<% else %> 
+	<h4>Verified listing</h4>
+	<% if @verified_listings.count == 0 %>
+		<p>Your listing is pending for verification.</p>
+	<% else %>
+		<% @verified_listings.each do |l| %>
+			<p><%= link_to l.listing_name, user_listing_path(@user.id,l.id) %></p>
+			
+		<% end %>
+	<% end %>
+	<hr>
+	<h4>Pending for verification</h4>
+	<% if @draft_listings.count == 0 %>
+		<h4>You have no pending listing</h4>
+	<% else %>
+		<% @draft_listings.each do |l| %>
+			<p><%= link_to l.listing_name, user_listing_path(@user.id,l.id) %></p>
+			
+		<% end %>
+	<% end %>
+<% end %>  
 

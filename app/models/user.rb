@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  enum role: { user: 0, superadmin: 1 }
+
 
 # In app/models/user.rb    
  

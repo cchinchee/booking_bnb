@@ -1,0 +1,15 @@
+<h1>Draft listing awaiting for verify</h1>
+
+<% Listing.draft.each do |l|%>
+
+<p><strong><%= link_to l.listing_name, "/listings/#{l.id}" %></strong></p>
+<p><%= l.description %></p>
+<p><%= l.property_type%></p>
+<p><%= l.country%></p>
+
+<p>status: <%= l.status%></p>
+
+
+<%= button_to 'Verify listing', user_listing_path(l.user_id,l.id) %>
+<hr>
+<% end %>

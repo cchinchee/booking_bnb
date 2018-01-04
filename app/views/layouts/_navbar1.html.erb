@@ -9,7 +9,7 @@
   	        <span class="icon-bar"></span>
   	        <span class="icon-bar"></span>
   	      </button>
-  	      <a class="navbar-brand" href="/"><%= image_tag('darren-bookingbnb.png', height:"50px", width:"50px")%></a>
+  	      <a class="navbar-brand" id="navbar-brand-logo" href="/"><%= image_tag('airbnb_logo_small.png', height:"35pxpx", width:"35px")%></a>
   	    </div>
 
   	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,28 +25,150 @@
   	      <ul class="nav navbar-nav navbar-right">
   	      
   	        <li><a href="/listings/new">Become a host</a></li>
+
+            <% if !signed_in? %>             
+              <li><a class="modal-btn" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
+              <li><a class="modal-btn " data-toggle="modal" data-dismiss="modal" data-target="#logInModal"><i class="fa fa-sign-in"></i>  Log In</a></li>
+              
+            <% end %>
+
+            <% if signed_in? %>
   	        <li class="dropdown">
   	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
   	          <ul class="dropdown-menu">
-
+                
   	            
-                  <% if signed_in? %>
-                    <li><%= link_to current_user.name, user_path(current_user.id) %> </li>
-                    <li><%= link_to 'Sign Out', sign_out_path, method: :delete %></li>
-                    
-                  <% else %>
-                    <li><%= link_to "Sign in", sign_in_path %></li>
-                  <% end %>  	            
 
+                <li><%= link_to current_user.name, user_path(current_user.id) %> </li>
                 <li><a href="#">Another action</a></li>
-  	            <li><a href="#">Something else here</a></li>
-  	            <li role="separator" class="divider"></li>
-  	            <li><a href="#">Separated link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                  <% if signed_in? %>
+                    <li><%= link_to 'Log Out', sign_out_path, method: :delete %></li>
+                  <% end %>  	            
+                
   	          </ul>
   	        </li>
+            <% end %>
   	      </ul>
   	    </div><!-- /.navbar-collapse -->
   </div>
 </nav>
 
 
+<div class="modal fade text-center" id="signUpModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" id="modal-header-social">
+        
+        <p>Sign up with <%= link_to "Facebook", "/auth/facebook?display=popup" %>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <hr class="hr-text" data-content="or">
+      <div class="modal-body">
+          <div class="form-group ">
+            <%= form_for :user, url: users_path do |form| %>
+              <%= render partial: '/users/form', object: form %>
+
+              <div class="submit-field form-group" >
+                <%= form.submit 'Sign up', class: "form-control", id: "form-group-submit" %>
+              </div>
+
+            <% end %>
+          </div>
+          
+      </div>
+      <div class="modal-footer">
+        <h4 class="modal-footer-content text-center">Already have a Booking BnB account? <a class="modal-btn" data-toggle="modal" data-dismiss="modal" data-target="#logInModal">Log In</a></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- log in modal -->
+
+<div class="modal fade text-center" id="logInModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Log in to continue</h3>
+        
+        
+      </div>
+      
+      <div class="modal-body">
+          <div class="form-group ">
+           
+
+            <%= form_for :session, url: session_path do |form| %>
+              <div class="text-field form-group">
+                <%= form.text_field :email, type: 'email', placeholder: "Email Address", class: "form-control" %>
+              </div>
+
+              <div class="password-field form-group">
+                <%= form.password_field :password, placeholder: "Create a Password", class: "form-control" %>
+              </div>
+
+              <div class="submit-field form-group" >
+                <%= form.submit 'Log In', class: "form-control", id: "form-group-submit" %>
+              </div>
+              <a class="modal-btn" data-toggle="modal" data-dismiss="modal" data-target="#forgotPasswordModal">Forgot password?</a>
+            <% end %>
+          </div>
+      <hr class="hr-text" data-content="or continue with">    
+      <a href="/auth/facebook?display=popup" class="loginBtn loginBtn--facebook">Login with Facebook </a>
+      
+      </div>
+
+      <div class="modal-footer">
+        <h4 class="modal-footer-content text-center">Don't have an account? <a class="modal-btn" data-toggle="modal" data-dismiss="modal" data-target="#signUpModal">Sign Up</a></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Forgot password? modal -->
+
+<div class="modal fade text-center" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Reset your password</h3>
+        
+        <h5>To be emailed a link to reset your password, please enter your email address.</h5>
+        
+      </div>
+      
+      <div class="modal-body">
+          <div class="form-group ">
+
+            <%= form_for :password, url: passwords_path do |form| %>
+              <div class="text-field form-group">
+                <%= form.text_field :email, type: 'email', placeholder: "Email Address", class: "form-control" %>
+              </div>
+
+
+              <div class="submit-field form-group" >
+                <%= form.submit 'Reset password', class: "form-control", id: "form-group-submit" %>
+              </div>
+            <% end %>
+          </div>
+          
+        <div class="modal-footer">
+          <i class="fa fa-angle-left fa-2x modal-footer-back" id="modal-footer-icon"></i><a class="modal-btn modal-footer-back" data-toggle="modal" data-dismiss="modal" data-target="#logInModal">Back to Login</a>
+        </div>  
+      </div>
+
+     
+    </div>
+  </div>
+</div>
+<!-- You will receive an email within the next few minutes. It contains instructions for changing your password. -->
