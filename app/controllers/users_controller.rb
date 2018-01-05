@@ -1,6 +1,6 @@
 class UsersController < Clearance::UsersController
-	
-	
+	before_action :require_login, only: [:edit]
+	before_action :find_user, only: [:edit, :update]
 
 	def show
 		@user = User.find_by(id: params[:id])
@@ -8,7 +8,32 @@ class UsersController < Clearance::UsersController
 		@draft_listings = Listing.where(status: 0, user_id: @user.id)
 	end 
 
+
+	def edit
+		
+		if current_user.id == @user.id
+			user_path(@user.id)
+		else
+			redirect_to "/"
+		end
+	end
+
+	def update
+		if current_user.id == @user.id
+			@user.update(update_params)
+			redirect_to "/users/#{@user.id}"
+		else
+			redirect_to "/"
+		end
+	end
+
+
+	def url_after_create
+		user_path(@user.id)
+	end
+
 	def user_from_params
+	    
 	    email = user_params.delete(:email)
 	    password = user_params.delete(:password)
 	    gender = user_params.delete(:gender)
@@ -23,9 +48,14 @@ class UsersController < Clearance::UsersController
 	    end
 	end
 
-	def url_after_create
-		user_path(@user.id)
+	def update_params
+		params.require(:user).permit(:name, :email, :gender, :password, :avatar, :remove_avatar)
 	end
+	
+	def find_user
+		@user = User.find(params[:id])
+	end
+
 end
 
 

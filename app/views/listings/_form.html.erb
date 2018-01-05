@@ -1,0 +1,38 @@
+<div class="text-field form-group">
+	<p>What is the name of your place? <%= form.text_field :listing_name, placeholder:"Place\'s name", class: "form-control" %></p>
+</div>
+<div class="select form-group">
+	<p>Type of property: <%= form.select :property_type, options_for_select([ "Entire place", "Private Room","Shared Room"], @listing.property_type), class:"form-control"%></p>	
+</div>
+<div class="select form-group">	
+	<p>For how many guests? <%= form.select :number_of_guests, options_for_select([1,2,3,4,5,6,7,8,9,10,11,12], @listing.number_of_guests), class:"form-control"%></p>
+</div>	
+<div class="select form-group">		
+	<p>How many bedrooms? <%= form.select :number_of_bedrooms, options_for_select([1,2,3,4], @listing.number_of_bedrooms), class:"form-control"%></p>
+</div>	
+<div class="select form-group">	
+	<p>How many beds? <%= form.select :number_of_beds, options_for_select([1,2,3,4,5,6,7,8,9,10], @listing.number_of_beds), class:"form-control"%></p>
+</div>	
+<div class="text_area form-group">	
+	<p>What is your address? <%= form.text_area :address, placeholder: 'Address', rows: 1, cols: 100, class:"form-control"%></p>
+</div>
+<div class="text-field form-group">
+	<p>Which country? <%= form.text_field :country, placeholder: 'Country', class:"form-control"%></p>
+</div>	
+<div class="text-area form-group">
+	<p>Tell us more about your place? <%= form.text_area :description, placeholder: 'Home\'s description' , rows: 5, cols: 100, class:"form-control"%></p>
+</div>	
+<div class="text-field form-group">
+	<p>What is your's listing price?<%= form.text_field :price, placeholder: 'price per night', class:"form-control"%></p>
+</div>	
+<div class="text-field form-group">
+	<p>Your showhouse's photos? <%= form.file_field :photos, multiple: true%></p>	
+</div>	
+	
+<div class="submit-field form-group" >
+ 	<%= form.submit "Save", class:"form-control", id:"listing-submit-field"%>
+</div>
+
+
+
+

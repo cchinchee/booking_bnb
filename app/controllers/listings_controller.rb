@@ -1,12 +1,14 @@
 class ListingsController < ApplicationController	
-	before_action :require_login, only: [:new, :create, :destroy]	
+	before_action :require_login, only: [:new, :create, :destroy]
+	before_action :find_listing, only: [:show, :edit, :destroy, :update_listing]	
 
 	def new
-
+		@listing = Listing.new
 	end
 
 	def create
 		listing = current_user.listings.new(listing_params)
+		
 		if listing.save
 			flash[:info] = "Listing created"
 			redirect_to "/users/#{current_user.id}"
@@ -17,13 +19,16 @@ class ListingsController < ApplicationController
 	end
 
 	def show
-		@listing = Listing.find_by(id: params[:id])
-		
+
 	end
 
-	def update
+	def edit
+
+	end
+
+	def verify
 		if current_user.superadmin?
-			listing = Listing.find_by(user_id: params[:user_id], id: params[:id])
+			listing = Listing.find_by(id: params[:id])
 			listing.verified!
 			redirect_to "/listings/verified"
 		else
@@ -36,13 +41,27 @@ class ListingsController < ApplicationController
 
 	end 
 
+
+
+	def update_listing
+		if current_user.id == @listing.user_id
+			@listing.update(listing_params)
+			redirect_to "/users/#{@listing.user_id}/listings/#{@listing.id}}"
+		else
+			redirect_to "/"
+		end
+		
+	end
+	
+	def find_listing
+		@listing = Listing.find_by(id: params[:id])
+	end 
+	
 	def listing_params
 		# params.inspect
-		params.require(:listing).permit(:listing_name, :description, :property_type, :number_of_bedrooms, :number_of_beds, :number_of_guests, :address, :country, :photos)
-
+		params.require(:listing).permit(:listing_name, :description, :property_type, :number_of_bedrooms, :number_of_beds, :number_of_guests, :address, :country, :price, {photos: []})
 	end
 
-	
 end
 
 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
-  resources :users, controller: "users", only: [:create, :show] do
+  resources :users, controller: "users", only: [:create, :show, :edit, :update] do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
@@ -22,13 +22,14 @@ Rails.application.routes.draw do
   get "/listings/new" => "listings#new"
   post "/listings" => "listings#create"
   
-  post "/users/:user_id/listings/:id" =>"listings#update"
   delete "/users/:user_id/listings/:id" =>"listings#destroy"
   get "/listings" => "listings#draft_listings"
   get "/listings/verified" =>"listings#verified_listings"
 
   get "/listings/:id" => "listings#show"
   
+  post "/listings/:id/verify" =>"listings#verify"
+  post "/users/:user_id/listings/:id" => "listings#update_listing"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

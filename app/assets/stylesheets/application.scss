@@ -4,10 +4,13 @@
 @import "main_page";
 @import "listing";
 @import "sessions";
+@import "user_show";
+@import "product_grid";
+@import "edit_profile";
 
 body {
 	
-	margin: 70px 0px 0px 10px;
+	margin: 50px 0px 0px 0px;
 }
 /* Shared */
 .loginBtn {

@@ -1,21 +1,12 @@
 
 <%= render partial: '/layouts/navbar1' %>
 
-
-<h3>Welcome to Booking BnB!</h3>
-<% @listings.verified.each do |l|%>
-
-<p><strong><%= link_to l.listing_name, "/listings/#{l.id}" %></strong></p>
-<p><%= l.description %></p>
-<p><%= l.property_type%></p>
-<p><%= l.country%></p>
+<div class="index-body">
+	<h3>Explore Booking BnB!</h3>
+</div>	
+	<%= render partial: '/layouts/product_grid' %>
 
 
-<hr>
-
-
-<% end %>
-
-<div class="text-center">
-	<%= paginate @listings %>
-</div>
+	<div class="text-center">
+		<%= paginate @listings %>
+	</div>

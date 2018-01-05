@@ -2,23 +2,19 @@
 
 <%= render partial: '/layouts/navbar2' %>
 
-<br>
-<p>Hi, <%= current_user.name %>! Let's get started listing your space.</p>
+<div class="listing-container">
+	<div class="listing-container-header">
+	<h4>Hi, <%= current_user.name %>! Let's get started listing your space.</h4>
+	</div>
+	<div class="listing-container-subheader">
+		<h3>What kind of place do you have?</h3>
+	</div>
+	<div class="listing-body-form">
+	  <%= form_for @listing do |form| %>
 
-<h3>What kind of place do you have?</h3>
+  	  <%= render partial: '/listings/form', object: form %>
 
-<%= form_tag listings_path do%>
-	<p>What is the name of your place? <%= text_field_tag 'listing[listing_name]', '', placeholder: 'Place\'s name'%></p>
-	<p>Type of property: <%= select_tag 'listing[property_type]', options_for_select([ "Entire place", "Private Room","Shared Room"])%></p>	
-	<p>For how many guests? <%= select_tag 'listing[number_of_guests]', options_for_select([1,2,3,4,5,6,7,8,9,10,11,12])%></p>
-	<p>How many bedrooms? <%= select_tag 'listing[number_of_bedrooms]', options_for_select([1,2,3,4])%></p>
-	<p>How many beds? <%= select_tag 'listing[number_of_beds]', options_for_select([1,2,3,4,5,6,7,8,9,10])%></p>
-	
-	<p>What is your address? <%= text_area_tag 'listing[address]', '', placeholder: 'Address' , rows: 1, cols: 100%></p>
-	<p>Which country? <%= text_field_tag 'listing[country]', '', placeholder: 'Country' %></p>
-	<p>Tell us more about your place? <%= text_area_tag 'listing[description]', '', placeholder: 'Home\'s description' , rows: 5, cols: 100%></p>
+	  <% end %>
+	</div> 
 
-	<p>Your showhouse's photos? <%= file_field_tag 'listing[photo]', multiple: true%></p>	
-	
-	<%= submit_tag 'Submit' %>
-<% end %>
+</div>

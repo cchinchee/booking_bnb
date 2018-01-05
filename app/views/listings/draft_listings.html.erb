@@ -10,6 +10,6 @@
 <p>status: <%= l.status%></p>
 
 
-<%= button_to 'Verify listing', user_listing_path(l.user_id,l.id) %>
+<%= button_to 'Verify listing', "/listings/#{l.id}/verify", method: :post %>
 <hr>
 <% end %>

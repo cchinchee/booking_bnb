@@ -1,0 +1,20 @@
+<%= render partial: '/layouts/navbar2' %>
+
+<div class="edit-listing">
+	<div class="edit-listing-header">
+		<h3>Hi, <%= current_user.name %>! Edit your listing here.</h3>
+	</div>
+
+	<div class="content-info">
+		<h3>What kind of place do you have?</h3>
+
+		  <%= form_for [current_user, @listing], url:"/users/#{@listing.user_id}/listings/#{@listing.id}", method: :post do |form| %>
+
+		  	<%= render partial: '/listings/form', object: form %>
+
+		  <% end %>		
+		
+	</div>
+</div>
+
+

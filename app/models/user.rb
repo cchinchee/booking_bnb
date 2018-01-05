@@ -2,7 +2,7 @@ class User < ApplicationRecord
   include Clearance::User
 
   enum role: { user: 0, superadmin: 1 }
-
+  mount_uploader :avatar, PhotoUploader
 
 # In app/models/user.rb    
  

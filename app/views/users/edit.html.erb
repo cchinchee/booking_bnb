@@ -1,0 +1,36 @@
+<%= render partial: '/layouts/navbar1' %>
+
+<div class="edit-container">
+	<div class="edit-container-header">
+		<h2 class="edit-container-header-title">Edit Profile</h2>
+	</div>
+	<div class="edit-container-body">
+		
+		<%= form_for :user, url: user_path, method: :put do |form| %>
+			
+			   <%= image_tag @user.avatar %>Or remove photo <%= form.check_box :remove_avatar %>
+			<div class="text-field form-group row">
+			  <div class="edit-container-item text-right col-md-3"><h4>Profile photo</h4></div>
+			  <div class="edit-container-item text-right col-md-9"><%= form.file_field :avatar%></div>
+			</div>
+
+			<div class="text-field form-group row">
+			  <div class="edit-container-item text-right col-md-3"><h4 >Name</h4></div>
+			  <div class="edit-container-item text-right col-md-9"><%= form.text_field :name, value:"#{current_user.name}", class: "form-control" %></div> 
+			</div>
+
+			<div class="text-field form-group row">
+				<div class="edit-container-item text-right col-md-3"><h4 >Gender</h4></div>
+				<div class="edit-container-item text-right col-md-9"><%= form.text_field :gender, value:"#{current_user.gender}", class: "form-control" %></div> 
+			</div>
+
+			<div class="text-field form-group row">
+				<div class="edit-container-item text-right col-md-3"><h4 >Email</h4></div>
+				<div class="edit-container-item text-right col-md-9"><%= form.text_field :email, value:"#{current_user.email}", class: "form-control" %></div> 
+		  	<div class="submit-field row form-group">
+		  		<div class="edit-container-item text-right col-md-2"><%= form.submit 'Save', class: "form-control"%></div>
+		    
+		  	</div>
+		<% end%>  
+	</div>	
+</div>

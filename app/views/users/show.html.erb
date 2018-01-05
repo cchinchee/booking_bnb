@@ -1,13 +1,17 @@
 <%= render partial: '/layouts/navbar1' %>
 
 <h2>Hey, I'm <%= @user.name%></h2>
+<%= @user.gender %>
 
 <br>
 <% if signed_in? %>
 	<% if current_user.superadmin? %>
 
 	<h4><%= link_to 'Draft list', listings_path %></h4>
-
+		<% a = Listing.draft.count%>
+		<% if a == 0%>
+			<p>You have no pending listing.</p>
+		<% end %>
 	<% end %>
 <% end %>
 
