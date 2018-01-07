@@ -6,6 +6,7 @@ class UsersController < Clearance::UsersController
 		@user = User.find_by(id: params[:id])
 		@verified_listings = Listing.where(status: 1, user_id: @user.id)
 		@draft_listings = Listing.where(status: 0, user_id: @user.id)
+		@reservation = @user.reservations
 	end 
 
 

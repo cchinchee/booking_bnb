@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 	before_action :require_login, only: [:new, :create, :destroy]
-	before_action :find_reservation, only: [:new, :show, :edit, :destroy]	
+	before_action :find_reservation, only: [:new, :show, :edit, :destroy, :create]	
 
 	def new
 		@reservation = Reservation.new(reservation_params)
@@ -9,14 +9,21 @@ class ReservationsController < ApplicationController
 	end
 
 	def create
-		if booking.save
+		@reservation = current_user.reservations.new(reservation_params)
+		if @reservation.save
 			flash[:info] = "Booking Confirmed"
 			redirect_to "/users/#{current_user.id}"
 		else
-			flash[:error] = "Booking not confirmed"
-			redirect_to "/users/#{current_user.id}"
+			@errors = @reservation.errors.full_messages
+			redirect_to "/listings/#{@reservation.listing_id}"
 		end 	
 
+	end
+
+	def destroy
+		@reservation = Reservation.find(params[:id])
+		@reservation.destroy
+		redirect_to "/users/#{@reservation.user_id}"
 	end
 
 	def find_reservation
@@ -28,4 +35,5 @@ class ReservationsController < ApplicationController
 		params.require(:reservation).permit(:start_date, :end_date, :number_of_guests, :user_id, :listing_id)
 	end
 
+	
 end

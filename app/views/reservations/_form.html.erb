@@ -1,3 +1,11 @@
+<% if @errors.present?  %>
+
+<div>
+	<%= @errors %>
+
+</div>
+<% end  %>
+
 <div class="text-field form-group">
   
   <p>Start Date: <%= form.date_field :start_date %> </p>

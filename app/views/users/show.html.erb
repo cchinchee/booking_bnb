@@ -43,3 +43,25 @@
 <% end %> 
 	</div> 
 </div>
+
+<h3>Reservations</h3>
+<table>
+	<tr>
+		<th>Listing name</th>
+		<th>Starting Date</th>
+		<th>End Date</th>
+		<th>Number of guests</th>
+		<th>Total Price</th>
+	</tr>
+	<% @reservation.each do |booking| %>
+		<tr>
+			<td><%= link_to booking.listing.listing_name  %></td>
+			<td><%= booking.start_date.strftime('%d %B %Y') %></td>
+			<td><%= booking.end_date.strftime('%d %B %Y') %></td>
+			<td><%= booking.number_of_guests %></td>
+			<td><%= booking.total_price %></td>
+			<td><%= link_to 'Cancel Booking', user_listing_reservation_path(booking.user_id, booking.listing_id, booking.id), method: :delete %></td>
+		</tr>
+	<% end %>
+
+</table>
