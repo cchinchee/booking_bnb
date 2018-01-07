@@ -1,6 +1,6 @@
 class UsersController < Clearance::UsersController
 	before_action :require_login, only: [:edit]
-	before_action :find_user, only: [:edit, :update]
+	before_action :find_user, only: [:edit, :update, :media]
 
 	def show
 		@user = User.find_by(id: params[:id])
@@ -11,6 +11,15 @@ class UsersController < Clearance::UsersController
 
 	def edit
 		
+		if current_user.id == @user.id
+			user_path(@user.id)
+		else
+			redirect_to "/"
+		end
+	end
+
+
+	def media
 		if current_user.id == @user.id
 			user_path(@user.id)
 		else

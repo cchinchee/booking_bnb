@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
-    resources :listings
+    resources :listings do
+      resources :reservations
+    end   
   end
 
   # get '/users/:id' => 'users#show', as: 'user'
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
   
   post "/listings/:id/verify" =>"listings#verify"
   post "/users/:user_id/listings/:id" => "listings#update_listing"
+  get "/users/:id/media" => "users#media"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

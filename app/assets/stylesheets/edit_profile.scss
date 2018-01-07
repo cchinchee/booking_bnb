@@ -81,7 +81,7 @@ a.sidenav-item:hover {
 	padding-left: 0;
 }
 
-.btn-primary {
+.btn-profile {
 	border-color: #ff5a5f;
 	background-color: #ff5a5f;
 	color:#fff;
@@ -93,8 +93,17 @@ a.sidenav-item:hover {
 	font-size: 16px;
 }
 
-.btn-primary:hover {
-	background-color: #fff;
-	color:#ff5a5f;
-	border-color:#ff5a5f; 
+.btn-profile:hover, .btn-profile:focus, .btn-profile:visited {
+	background-color: #ff7e82;
+	color:#fff;
+	border-color:#ff7e82; 
+}
+
+.btn-profile:active {
+	border-color: #e00007;
+	background-color: #e00007;
+	color:#fff;
+}
+.active.btn, .btn:active {
+	background-color: #f2f2f2;
 }
