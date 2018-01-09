@@ -42,8 +42,6 @@ class ListingsController < ApplicationController
 
 	end 
 
-
-
 	def update_listing
 		if current_user.id == @listing.user_id
 			@listing.update(listing_params)
@@ -51,7 +49,6 @@ class ListingsController < ApplicationController
 		else
 			redirect_to "/"
 		end
-		
 	end
 	
 	def find_listing

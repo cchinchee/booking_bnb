@@ -45,23 +45,32 @@
 </div>
 
 <h3>Reservations</h3>
-<table>
-	<tr>
-		<th>Listing name</th>
-		<th>Starting Date</th>
-		<th>End Date</th>
-		<th>Number of guests</th>
-		<th>Total Price</th>
+
+<table class="reservation-list">
+	<tr class="reservation-list-title row">
+		<th class="reservation-list-item col-lg-1">Listing name </th>
+		<th class="reservation-list-item col-lg-1">Starting Date </th>
+		<th class="reservation-list-item col-lg-1">End Date </th>
+		<th class="reservation-list-item col-lg-1">Number of guests </th>
+		<th class="reservation-list-item col-lg-1">Total Price </th>
+		<th class="reservation-list-item col-lg-1">Payment status </th>
+		<th class="reservation-list-item col-lg-2">Action </th>
+		<th class="reservation-list-item col-lg-2">Payment gateway </th>
 	</tr>
 	<% @reservation.each do |booking| %>
-		<tr>
-			<td><%= link_to booking.listing.listing_name  %></td>
-			<td><%= booking.start_date.strftime('%d %B %Y') %></td>
-			<td><%= booking.end_date.strftime('%d %B %Y') %></td>
-			<td><%= booking.number_of_guests %></td>
-			<td><%= booking.total_price %></td>
-			<td><%= link_to 'Cancel Booking', user_listing_reservation_path(booking.user_id, booking.listing_id, booking.id), method: :delete %></td>
-		</tr>
+	<tr class="reservation-list-details row">
+		<td class="reservation-list-details col-lg-1"><%= link_to booking.listing.listing_name  %></td>
+		<td class="reservation-list-details col-lg-1"><%= booking.start_date.strftime('%d %B %Y') %></td>
+		<td class="reservation-list-details col-lg-1"><%= booking.end_date.strftime('%d %B %Y') %></td>
+		<td class="reservation-list-details col-lg-1"><%= booking.number_of_guests %></td>
+		<td class="reservation-list-details col-lg-1"><%= booking.total_price %></td>
+		<td class="reservation-list-details col-lg-1"><%= booking.payment %></td>
+		<td class="reservation-list-details col-lg-2"><%= link_to 'Cancel Booking', user_listing_reservation_path(booking.user_id, booking.listing_id, booking.id), method: :delete %></td>
+		<% if booking.unpaid? %>
+			<td class="reservation-list-details col-lg-2"><%=link_to "Pay now", "/reservations/#{booking.id}/payment"%></td>
+		<% end %>	
+
+	</tr>
 	<% end %>
 
 </table>

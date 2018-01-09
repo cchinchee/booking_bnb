@@ -8,10 +8,9 @@ Rails.application.routes.draw do
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
     resources :listings do
-      resources :reservations
-    end   
+      resources :reservations 
   end
-
+end
   # get '/users/:id' => 'users#show', as: 'user'
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
@@ -33,6 +32,9 @@ Rails.application.routes.draw do
   post "/listings/:id/verify" =>"listings#verify"
   post "/users/:user_id/listings/:id" => "listings#update_listing"
   get "/users/:id/media" => "users#media"
+
+  get "/reservations/:id/payment" => "reservations#payment"
+  post "/reservations/:id/payment/checkout" => "reservations#checkout"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
