@@ -51,7 +51,7 @@
 			<span class="body-narbar-item">Location</span>
 			<% if current_user.id == @listing.user_id  %>
 				<span class="body-narbar-item"> · </span>
-				<span class="body-narbar-item"><%= link_to 'Edit Listing', edit_user_listing_path(listing.user_id, @listing.id) %></span>
+				<span class="body-narbar-item"><%= link_to 'Edit Listing', edit_user_listing_path(@listing.user_id, @listing.id) %></span>
 			<% end %>
 			<hr>
 		

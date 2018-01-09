@@ -45,6 +45,7 @@ class ReservationsController < ApplicationController
 
 		if result.success?
 			@reservation.paid!
+			UserMailer.booking_email(current_user, current_user.email, @reservation.listing.listing_name).deliver
 			redirect_to :root, :flash => { :success => "Transaction successful!"}
 		else
 			redirect_to :root, :flash => { :error => "Transaction failed. Please try again."}
