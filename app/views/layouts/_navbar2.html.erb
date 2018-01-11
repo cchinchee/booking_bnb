@@ -26,8 +26,7 @@
 
                 <li><%= link_to current_user.name, user_path(current_user.id) %> </li>
                 <li><%= link_to 'Edit Profile', edit_user_path(current_user.id)%></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
+                
                   <% if signed_in? %>
                     <li><%= link_to 'Log Out', sign_out_path, method: :delete %></li>
                   <% end %>               

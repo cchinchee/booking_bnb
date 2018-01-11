@@ -67,6 +67,32 @@ body {
   margin:auto;
 }
 
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3rem;
+  background-color: #efefef;
+  text-align: center;
+  margin-top: 15px;
+
+}
+
 /* Shared */
 .loginBtn {
   box-sizing: border-box;

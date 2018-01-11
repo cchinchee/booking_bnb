@@ -78,9 +78,7 @@ a.sidenav-item:hover {
 
 .panel-body-item {
 	display:block;
-	padding-left: 0;
 	padding-top: 20px;
-	padding-right: 0px;
 
 	&.p {
 		line-height: 1.43;
@@ -91,17 +89,8 @@ a.sidenav-item:hover {
 	}
 }
 
-#save {
-	background-color: white;
-	border-color: #c4c4c4;
-	color:#484848;
-	font-weight: bold;
-	line-height: 1.43;
-	box-sizing: border-box;
-	padding-left: 200px;
-	padding-right: 200px;
 
-}
+
 
 .btn-profile {
 	border-color: #ff5a5f;
@@ -133,4 +122,15 @@ a.sidenav-item:hover {
 #profile_picture {
 	height: 225px;
 	width:225px;
+}
+
+#save {
+	background-color: white;
+	border-color: #c4c4c4;
+	color:#484848;
+	font-weight: bold;
+	line-height: 1.43;
+	box-sizing: border-box;
+	padding-left: 200px;
+	padding-right: 200px;
 }
