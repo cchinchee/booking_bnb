@@ -22,7 +22,7 @@ class Reservation < ApplicationRecord
 	end
 
 	def check_max_guests
-		max_guests = listing.number_of_guests
+		max_guests = listing.number_of_guests + 1
 		return if number_of_guests < max_guests
 		errors.add(:max_guests, "Max guests number exceeded")
 
