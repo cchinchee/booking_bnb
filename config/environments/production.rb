@@ -12,6 +12,8 @@ Rails.application.configure do
   :enable_starttls_auto => true
   }
 
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
  
   # Code is not reloaded between requests.
   config.cache_classes = true
