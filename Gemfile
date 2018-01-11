@@ -18,6 +18,7 @@ gem 'fog'
 gem 'braintree'
 gem 'letter_opener', :group => :development
 gem 'sidekiq'
+gem 'omniauth-google-oauth2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record

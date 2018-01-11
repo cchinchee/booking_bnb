@@ -20,20 +20,30 @@
 		</div>
 			<%= form_for :user, url: user_path, method: :patch do |form| %>
 				<div class="panel-body">
-					<div class="panel-body-container">  
-						<div class="text-field form-group row">
-						  <div class="panel-body-item text-left col-md-3"><%= image_tag @user.avatar %></div>
-						  <div class="panel-body-item text-left col-md-8"><p>Clear frontal face photos are an important way for hosts and guests to learn about each other. It’s not much fun to host a landscape! Be sure to use a photo that clearly shows your face and doesn’t include any personal or sensitive info you’d rather not have hosts or guests see.</p></div>
+					<div class="photos-section">  
+						<div class="text-field row">
+						  <div class="panel-body-item text-left col-md-4"><%= image_tag @user.avatar, id:"profile_picture" %></div>
 
-						</div>
-						<div class="text-field form-group row">
-						  	<%= form.file_field :avatar%></div>
-							Change profile photo <%= form.check_box :remove_avatar %>
-						</div>
+						  <div class="panel-body-item text-left col-md-7">
+						  	<p>Clear frontal face photos are an important way for hosts and guests to learn about each other. It’s not much fun to host a landscape! Be sure to use a photo that clearly shows your face and doesn’t include any personal or sensitive info you’d rather not have hosts or guests see.</p>
 
-						<div class="submit-field form-group">
-							<div class="panel-body-item text-left col-md-2"><%= form.submit 'Save', class: "btn btn-profile btn-large"%></div>
-						</div>	
+							<div class="text-field form-group">
+							  	<%= form.file_field :avatar%>
+							</div>
+							<div class="text-field form-group">
+							  	
+							<p>Delete current photo <%= form.check_box :remove_avatar %></p>
+							  		
+							</div>
+							<div class="submit-field form-group">
+
+							<div class="text-left col-md-6"><%= form.submit 'Save', class: "btn btn-profile btn-large", id:"save"%></div>
+							</div>
+						  </div>	
+						
+							
+						
+
 					</div>
 				</div>		
 

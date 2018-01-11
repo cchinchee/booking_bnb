@@ -1,5 +1,47 @@
+.container {
+  margin-top: 15px;
+}
+
 .navbar-brand{
 	padding:3px 0px 5px 0px;
+}
+
+.navbar-item:hover {
+  border-bottom: 2px solid #777;
+}
+
+.navbar-default {
+  height: 80px;
+}
+
+.nav.navbar-nav.navbar-right {
+  li {
+    height: 100%;
+  }
+}
+
+.navbar-right {
+  vertical-align: middle !important;
+}
+.nav > a {
+  padding-top: 100px;
+}
+
+.navbar-nav > li > ul.dropdown-menu {
+  border:1px solid #DBDBDB;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  min-width: 282px;
+  max-width: 950px;
+  min-height: 60px;
+  position: absolute;
+  margin-top:6px; 
+}
+
+a.dropdown-item {
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  color: #767676;
 }
 
 #fb_button {
@@ -50,6 +92,8 @@ hr.hr-text {
 
 .modal-btn {
 	cursor: pointer;
+  color:#008489;
+  padding-bottom: 5px;
 }
 
 #form-group-submit{

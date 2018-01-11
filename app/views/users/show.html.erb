@@ -1,7 +1,7 @@
 <%= render partial: '/layouts/navbar1' %>
 
 <div class="page-container">
-	<div clAA="row"
+	<div clAA="row">
 <h2>Hey, I'm <%= @user.name%>!</h2>
 <%= @user.gender %>
 
@@ -65,7 +65,7 @@
 		<td class="reservation-list-details col-lg-1"><%= booking.number_of_guests %></td>
 		<td class="reservation-list-details col-lg-1"><%= booking.total_price %></td>
 		<td class="reservation-list-details col-lg-1"><%= booking.payment %></td>
-		<td class="reservation-list-details col-lg-2"><%= link_to 'Cancel Booking', user_listing_reservation_path(booking.user_id, booking.listing_id, booking.id), method: :delete %></td>
+		<td class="reservation-list-details col-lg-2"><%= link_to 'Cancel Booking', user_listing_reservation_path(booking.user_id, booking.listing_id, booking.id), method: :delete, data: { confirm: "Do you want to delete this booking?"} %></td>
 		<% if booking.unpaid? %>
 			<td class="reservation-list-details col-lg-2"><%=link_to "Pay now", "/reservations/#{booking.id}/payment"%></td>
 		<% end %>	

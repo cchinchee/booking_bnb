@@ -11,10 +11,62 @@
 
 body {
 	
-	margin: 50px 0px 0px 0px;
+	padding-top:80px;
   line-height: 1.43;
   font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+.modal-body {
+  padding:32px;
+}
+
+.social-login-icon {
+  border: 2px solid transparent;
+  border-color: #484848;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-size: 19px;
+  line-height: 22px;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-weight: 700;
+  padding-top:12px;
+  padding-bottom: 12px;
+  display: inline-block;
+  position:relative;
+  color:#484848;
+}
+
+.social-login-seperator {
+  box-sizing: border-box;
+  padding: 0 5px;
+
+  a.social-login-icon {
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif ;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      color:#484848;
+    }
+  }
+}
+
+.profile-menu {
+
+}
+
+.social-login-image{
+  padding-right:5px;
+}
+
+.social-login {
+  margin:auto;
+}
+
 /* Shared */
 .loginBtn {
   box-sizing: border-box;

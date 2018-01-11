@@ -12,7 +12,18 @@ class ReservationsController < ApplicationController
 	def create
 		@reservation = current_user.reservations.new(reservation_params)
 		if @reservation.save
-			
+
+			@customer = current_user.name
+			@email = current_user.email
+			@listing_name = @reservation.listing.listing_name
+			@total_price = @reservation.total_price
+			@id = @reservation.id
+			@start_date = @reservation.start_date.to_s
+			@end_date = @reservation.end_date.to_s
+			@number_of_guests = @reservation.number_of_guests
+			@payment = @reservation.payment
+
+			ReservationJob.perform_later(@customer, @email, @listing_name, @total_price, @id, @start_date, @end_date, @number_of_guests, @payment)
 			redirect_to "/users/#{current_user.id}", :flash => { :success => "Booking Confirmed!"}
 		else
 		
@@ -45,7 +56,8 @@ class ReservationsController < ApplicationController
 
 		if result.success?
 			@reservation.paid!
-			UserMailer.booking_email(current_user, current_user.email, @reservation.listing.listing_name).deliver
+
+			UserMailer.payment_email(current_user.name, current_user.email, @reservation.listing.listing_name).deliver
 			redirect_to :root, :flash => { :success => "Transaction successful!"}
 		else
 			redirect_to :root, :flash => { :error => "Transaction failed. Please try again."}

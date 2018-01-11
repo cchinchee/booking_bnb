@@ -38,14 +38,6 @@
 		  	<div class="submit-field form-group">
 		  		<div class="panel-body-item text-left col-md-2"><%= form.submit 'Save', class: "btn btn-profile btn-large"%></div>
 		  	</div>
-			<div class="text-field form-group row">
-			  <div class="panel-body-item text-right col-md-3"><h5>Profile photo</h5></div>
-			  <div class="panel-body-item text-left col-md-9"><%= image_tag @user.avatar %></div>
-			</div>
-			<div class="text-field form-group row">
-			  	<%= form.file_field :avatar%>
-				Change profile photo <%= form.check_box :remove_avatar %>
-			</div>	
 		<% end%>
 	</div>
 </div>

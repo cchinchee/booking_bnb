@@ -16,6 +16,7 @@ class User < ApplicationRecord
         name: auth_hash["extra"]["raw_info"]["name"],
         gender: auth_hash["extra"]["raw_info"]["gender"],
         email: auth_hash["extra"]["raw_info"]["email"],
+        remote_avatar_url: auth_hash["info"]["image"],
         password: SecureRandom.hex(16)
       )
       user.authentications << authentication
@@ -25,6 +26,11 @@ class User < ApplicationRecord
     # grab fb_token to access Facebook for user data
     def fb_token
       x = self.authentications.find_by(provider: 'facebook')
+      return x.token unless x.nil?
+    end
+
+    def google_token
+      x = self.authentications.find_by(provider: 'google')
       return x.token unless x.nil?
     end
  end
