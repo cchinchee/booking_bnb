@@ -1,1 +1,12 @@
-<p>Welcome</p>
+
+<%= render partial: '/layouts/navbar1' %>
+
+<div class="index-body">
+	<h3>Explore Booking BnB!</h3>
+</div>	
+	<%= render partial: '/layouts/product_grid' %>
+
+
+	<div class="text-center">
+		<%= paginate @listings %>
+	</div>

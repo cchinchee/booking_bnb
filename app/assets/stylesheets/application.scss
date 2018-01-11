@@ -1,3 +1,147 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "main_page";
+@import "listing";
+@import "sessions";
+@import "user_show";
+@import "product_grid";
+@import "edit_profile";
+@import "payment";
+
+body {
+	
+	padding-top:80px;
+  line-height: 1.43;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.modal-body {
+  padding:32px;
+}
+
+.social-login-icon {
+  border: 2px solid transparent;
+  border-color: #484848;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-size: 19px;
+  line-height: 22px;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-weight: 700;
+  padding-top:12px;
+  padding-bottom: 12px;
+  display: inline-block;
+  position:relative;
+  color:#484848;
+}
+
+.social-login-seperator {
+  box-sizing: border-box;
+  padding: 0 5px;
+
+  a.social-login-icon {
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif ;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      color:#484848;
+    }
+  }
+}
+
+.profile-menu {
+
+}
+
+.social-login-image{
+  padding-right:5px;
+}
+
+.social-login {
+  margin:auto;
+}
+
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3rem;
+  background-color: #efefef;
+  text-align: center;
+  margin-top: 15px;
+
+}
+
+/* Shared */
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  margin-bottom: 50px;
+  padding: 5px 15px 5px 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 23px;
+  color: #FFF;
+  text-decoration: none;
+}
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+
+
+/* Facebook */
+.loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+
+}
+.loginBtn--facebook:before {
+  border-right: #364e92 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+}
+.loginBtn--facebook:hover,
+.loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+  text-decoration:none;
+}

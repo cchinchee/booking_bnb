@@ -1,0 +1,43 @@
+<%= render partial: '/layouts/navbar1' %>
+
+<div class="edit-container row">
+	<div class="col-md-3 space-sm-4">
+		<div class="sidenav">
+			<ul class="sidenav-list">
+				<li><%= link_to 'Edit Profile', edit_user_path(current_user.id), class:"sidenav-item"%></li>
+				<li><%= link_to 'Photos', "/users/#{current_user.id}/media", class:"sidenav-item"%></li>	<li><a href="#" class="sidenav-item">Trust and Verifications</a></li>
+				<li><a href="#" class="sidenav-item">Reviews</a></li>
+				<li><a href="#" class="sidenav-item">References</a></li>	
+			</ul>
+		</div>
+		<%= link_to 'View Profile', user_path(current_user.id), class:"btn btn-block space-top-4" %>
+	</div>
+	<div class="edit-container-body col-md-9">
+		<div class="panel-header text-left col-md-12">
+			<h5>Required</h5>
+		</div>
+		<%= form_for :user, url: user_path, method: :put do |form| %>
+			<div class="panel-body">
+				<div class="panel-body-container">  
+					<div class="text-field form-group row">
+					  <div class="panel-body-item text-right col-md-3"><h5 >Name</h5></div>
+					  <div class="panel-body-item text-right col-md-7"><%= form.text_field :name, value:"#{current_user.name}", class: "form-control" %></div> 
+					</div>
+
+					<div class="text-field form-group row">
+						<div class="panel-body-item text-right col-md-3"><h5 >I Am</h5></div>
+						<div class="panel-body-item text-right col-md-7"><%= form.text_field :gender, value:"#{current_user.gender}", class: "form-control" %></div> 
+					</div>
+
+					<div class="text-field form-group row">
+						<div class="panel-body-item text-right col-md-3"><h5 >Email Address</h5></div>
+						<div class="panel-body-item text-right col-md-7"><%= form.text_field :email, value:"#{current_user.email}", class: "form-control" %></div>
+					</div>
+				</div>		 
+			</div>  
+		  	<div class="submit-field form-group">
+		  		<div class="panel-body-item text-left col-md-2"><%= form.submit 'Save', class: "btn btn-profile btn-large"%></div>
+		  	</div>
+		<% end%>
+	</div>
+</div>

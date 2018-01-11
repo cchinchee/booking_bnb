@@ -1,0 +1,93 @@
+<%= render partial: '/layouts/navbar1' %>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+
+		<% if @listing.photos.count == 0%>
+    		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<% else %>
+    		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		    <% @listing.photos.drop(1).each_with_index do |a, idx|%>
+		    <li data-target="#myCarousel" data-slide-to=" idx + 1"></li>
+		    <% end %>
+		 <%end %>   
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox" style="width:100%; height: 320px !important;">
+    <div class="item active">
+      <%= image_tag @listing.photos.first, class: "img-responsive" %>
+    </div>
+      <% @listing.photos.shift %>
+      <% @listing.photos.each do |photos|%>  
+    
+    <div class="item"> 
+      <%= image_tag photos, class: "img-responsive" %> 
+    </div>
+      <% end %>  
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class="body-content row">
+	<div class="body-narbar-container row">
+		<div class="body-narbar col-md-7">
+			<span class="body-narbar-item">Overview</span>
+			<span class="body-narbar-item" aria-hidden="true"> · </span>
+			<span class="body-narbar-item">Reviews</span>
+			<span class="body-narbar-item"> · </span>
+			<span class="body-narbar-item">The Host</span>
+			<span class="body-narbar-item"> · </span>
+			<span class="body-narbar-item">Location</span>
+			<% if current_user.id == @listing.user_id  %>
+				<span class="body-narbar-item"> · </span>
+				<span class="body-narbar-item"><%= link_to 'Edit Listing', edit_user_listing_path(@listing.user_id, @listing.id) %></span>
+			<% end %>
+			<hr>
+		
+
+			<div class="listing-profile row">
+				<div class="body-content-info col-md-6">
+				<h1 class="lisitng-name" style="margin-top: 10px;"><%= @listing.listing_name%></h1> 
+				<p><%= @listing.property_type%> · <%= @listing.country%></p>
+				</div>
+				<div class="avatar col-md-6">
+					<div><%= image_tag @listing.user.avatar.thumb, class: "profile-photo" %></div>
+					<h5>Host by <em><%= link_to @listing.user.name, user_path(@listing.user.id)%></em></h5>
+				</div>
+			</div>
+
+			<div class="body-content-icon-header" >
+				<p><i class="fa fa-users fa-lg body-content-icon col"></i>&nbsp;<%= @listing.number_of_guests%> guests <i class="fa fa-home fa-lg body-content-icon col"></i>&nbsp;<%= @listing.number_of_bedrooms%> bedrooms <i class="fa fa-bed fa-lg body-content-icon col"></i>&nbsp;<%= @listing.number_of_beds%> beds</p>
+			</div>
+			<p><%= @listing.description%></p>
+
+			<p>House address: <%= @listing.address%></p>
+		</div>
+
+
+
+		<div class="booking-container col-md-5 text-left">
+			<p><%= @listing.price %> per night</p>
+			<%= form_for @reservation, url: "/users/#{current_user.id}/listings/#{@listing.id}/reservations/new", method: :get do |form| %>
+
+			 <%= render partial: '/reservations/form', object: form %>
+
+			<% end %>
+		</div>
+	</div>
+
+	
+
+</div>
+

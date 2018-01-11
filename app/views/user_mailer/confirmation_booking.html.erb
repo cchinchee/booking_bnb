@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+	<h1>Hi, <%= @customer %>!</h1>
+
+	<h3>Greetings from Booking BnB! You have succeesfully booked <%= @listing_name %>.</h3>
+
+	    <p>You can see details of your new reservation here: </p>
+	    <ul>
+	    	<li>Listing name: <%= @listing_name %></li>
+	    	<li>Total price: <%= @total_price %></li>
+	    	<li>Booking number: <%= @booking_number %></li>
+	    	<li>Check In date: <%= @start_date %></li>
+	    	<li>Check Out date: <%= @end_date %></li>
+	    	<li>Number of guests: <%= @number_of_guests %></li>
+	    	<li>Payment: <%= @payment %></li>
+	    </ul>
+   	
+   	<p>Thank you for your reservation.</p>
+
+  </body>
+</html>

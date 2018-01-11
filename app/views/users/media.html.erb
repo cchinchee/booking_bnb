@@ -1,0 +1,48 @@
+<%= render partial: '/layouts/navbar1' %>
+
+<div class="edit-container row">
+	<div class="col-md-3 space-sm-4">
+		<div class="sidenav">
+			<ul class="sidenav-list">
+				<li><%= link_to 'Edit Profile', edit_user_path(current_user.id), class:"sidenav-item"%></li>
+				<li><%= link_to 'Photos', "/users/#{current_user.id}/media", class:"sidenav-item"%></li>	<li><a href="#" class="sidenav-item">Trust and Verifications</a></li>
+				<li><a href="#" class="sidenav-item">Reviews</a></li>
+				<li><a href="#" class="sidenav-item">References</a></li>	
+
+			</ul>
+		</div>
+		<%= link_to 'View Profile', user_path(current_user.id), class:"btn btn-block space-top-4" %>
+	</div>
+
+	<div class="edit-container-body col-md-9">
+		<div class="panel-header text-left col-md-12">
+			<h5>Profile Photo</h5>
+		</div>
+			<%= form_for :user, url: user_path, method: :patch do |form| %>
+				<div class="panel-body">
+					<div class="photos-section">  
+						<div class="text-field row">
+						  <div class="panel-body-item text-left col-md-4"><%= image_tag @user.avatar, id:"profile_picture" %></div>
+
+						  <div class="panel-body-item text-left col-md-7">
+						  	<p>Clear frontal face photos are an important way for hosts and guests to learn about each other. It’s not much fun to host a landscape! Be sure to use a photo that clearly shows your face and doesn’t include any personal or sensitive info you’d rather not have hosts or guests see.</p>
+
+							<div class="text-field form-group">
+							  	<%= form.file_field :avatar%>
+							</div>
+							<div class="text-field form-group">
+							  	
+							<p>Delete current photo <%= form.check_box :remove_avatar %></p>
+							  		
+							</div>
+							<div class="submit-field form-group">
+
+							<div class="text-left"><%= form.submit 'Save', class: "btn btn-profile", id:"save"%></div>
+							</div>
+						  </div>	
+					</div>
+				</div>		
+			<% end%>
+		</div>	
+	</div>
+</div>	

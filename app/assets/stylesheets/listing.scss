@@ -1,0 +1,34 @@
+// Place all the styles related to the Listing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listing-container {
+	max-width: 800px;
+	margin:auto;
+	margin-top:70px;
+}
+
+#listing-submit-field {
+	height: 4.5rem;
+	background-color: #FF5A5F;
+	font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif ;
+	border: 2px solid transparent;
+	font-size: 19px;
+	color:white;
+}
+
+.edit-listing{
+	width: 800px;
+	margin: auto;
+	margin-top: 70px;
+
+}
+
+.profile-photo {
+	width:28px;
+	height:28px;
+	border-radius: 50%;
+	border: 1px solid transparent;
+	
+
+}

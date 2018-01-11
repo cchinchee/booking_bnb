@@ -8,12 +8,10 @@
       <%= form.submit %>
     </div>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
+    
 
     <div>
-      <%= link_to "Sign in with Facebook", "/auth/facebook?display=popup" %>
+      <%= link_to "Sign up with Facebook", "/auth/facebook?display=popup" , class: "loginBtn loginBtn--facebook" %>
     </div>
   <% end %>
 </div>

@@ -1,3 +1,6 @@
+
+
+
 <%= form_for :session, url: session_path do |form| %>
   <div class="text-field">
     <%= form.label :email %>
@@ -13,9 +16,13 @@
     <%= form.submit %>
   </div>
 
+
+  <a href="/auth/facebook?display=popup" class="loginBtn loginBtn--facebook">Login with Facebook </a>
+
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
       <%= link_to t(".sign_up"), sign_up_path %>
+      <br>
     <% end %>
     <%= link_to t(".forgot_password"), new_password_path %>
   </div>

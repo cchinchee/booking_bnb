@@ -1,0 +1,13 @@
+<h1>Verified Listings</h1>
+
+<% Listing.verified.each do |l|%>
+
+<p><strong><%= link_to l.listing_name, "/listings/#{l.id}" %></strong></p>
+<p><%= l.description %></p>
+<p><%= l.property_type%></p>
+<p><%= l.country%></p>
+
+<p>status: <%= l.status%></p>
+<hr>
+
+<% end %>

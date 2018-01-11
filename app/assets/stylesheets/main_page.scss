@@ -1,0 +1,131 @@
+.container {
+  margin-top: 15px;
+}
+
+.navbar-brand{
+	padding:3px 0px 5px 0px;
+}
+
+.navbar-item:hover {
+  border-bottom: 2px solid #777;
+}
+
+.navbar-default {
+  height: 80px;
+}
+
+.nav.navbar-nav.navbar-right {
+  li {
+    height: 100%;
+  }
+}
+
+.navbar-right {
+  vertical-align: middle !important;
+}
+.nav > a {
+  padding-top: 100px;
+}
+
+.navbar-nav > li > ul.dropdown-menu {
+  border:1px solid #DBDBDB;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  min-width: 282px;
+  max-width: 950px;
+  min-height: 60px;
+  position: absolute;
+  margin-top:6px; 
+}
+
+a.dropdown-item {
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  color: #767676;
+}
+
+#fb_button {
+	background: blue;
+}
+
+div#modal-header-social {
+	border: 0px;
+}
+
+hr.hr-text {
+	margin-top: 0px;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+}
+
+.modal-btn {
+	cursor: pointer;
+  color:#008489;
+  padding-bottom: 5px;
+}
+
+#form-group-submit{
+	height: 4.5rem;
+	background-color: #FF5A5F;
+	font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif ;
+	border: 2px solid transparent;
+	font-size: 19px;
+	color:white;
+}
+
+.modal-footer-back {
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif ;
+  color:#008489;
+  font-size: 19px;
+}
+
+#modal-footer-icon {
+  margin: 7px;
+}
+
+.fa-angle-left::before {
+  padding-top: 20px;
+}
+
+#navbar-brand-logo {
+  padding-top: 8px;
+}
+
+.index-body {
+  width:1100px;
+  margin:auto;
+  margin-top: 70px;
+  margin-bottom: 50px; 
+}

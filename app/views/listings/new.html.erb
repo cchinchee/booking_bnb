@@ -1,0 +1,20 @@
+
+
+<%= render partial: '/layouts/navbar2' %>
+
+<div class="listing-container">
+	<div class="listing-container-header">
+	<h4>Hi, <%= current_user.name %>! Let's get started listing your space.</h4>
+	</div>
+	<div class="listing-container-subheader">
+		<h3>What kind of place do you have?</h3>
+	</div>
+	<div class="listing-body-form">
+	  <%= form_for @listing do |form| %>
+
+  	  <%= render partial: '/listings/form', object: form %>
+
+	  <% end %>
+	</div> 
+
+</div>

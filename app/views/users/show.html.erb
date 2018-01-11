@@ -1,0 +1,85 @@
+<%= render partial: '/layouts/navbar1' %>
+
+<div class="page-container row">
+	<div class="show-page-photo col-md-3">
+		<%= image_tag @user.avatar, id:"profile_picture" %>
+	</div>
+	
+
+	<div class="show-page-content col-md-8">
+		<h2>Hey, I'm <%= @user.name%>!</h2>
+		<%= @user.gender %>
+
+		<br>
+		<% if signed_in? %>
+			<% if current_user.superadmin? %>
+		
+			<h4><%= link_to 'Draft list', listings_path %></h4>
+				<% a = Listing.draft.count%>
+				<% if a == 0%>
+					<p>You have no pending listing.</p>
+				<% end %>
+			<% end %>
+		<% end %>
+
+
+		<% if @user.listings.count ==0 %>
+			<h4>You have no listing.</h4>
+		<% else %> 
+			<h4>Verified listing</h4>
+			<% if @verified_listings.count == 0 %>
+				<p>Your listing is pending for verification.</p>
+			<% else %>
+				<% @verified_listings.each do |l| %>
+					<p><%= link_to l.listing_name, user_listing_path(@user.id,l.id) %></p>
+					
+				<% end %>
+			<% end %>
+			<hr>
+			<h4>Pending for verification</h4>
+			<% if @draft_listings.count == 0 %>
+				<h4>You have no pending listing</h4>
+			<% else %>
+				<% @draft_listings.each do |l| %>
+					<p><%= link_to l.listing_name, user_listing_path(@user.id,l.id) %></p>
+					
+				<% end %>
+			<% end %>
+		<% end %> 
+	</div> 
+		
+</div>
+
+<% if @user.reservations.count != 0 %>
+<div class="booking-container">
+	<h3>My Booking</h3>
+
+	<table class="reservation-list">
+		<tr class="reservation-list-title row">
+			<th class="reservation-list-item col-lg-1">Listing name </th>
+			<th class="reservation-list-item col-lg-1">Starting Date </th>
+			<th class="reservation-list-item col-lg-1">End Date </th>
+			<th class="reservation-list-item col-lg-1">Number of guests </th>
+			<th class="reservation-list-item col-lg-1">Total Price </th>
+			<th class="reservation-list-item col-lg-1">Payment status </th>
+			<th class="reservation-list-item col-lg-2">Action </th>
+			<th class="reservation-list-item col-lg-2">Payment gateway </th>
+		</tr>
+		<% @reservation.each do |booking| %>
+		<tr class="reservation-list-details row">
+			<td class="reservation-list-details col-lg-1"><%= link_to booking.listing.listing_name  %></td>
+			<td class="reservation-list-details col-lg-1"><%= booking.start_date.strftime('%d %B %Y') %></td>
+			<td class="reservation-list-details col-lg-1"><%= booking.end_date.strftime('%d %B %Y') %></td>
+			<td class="reservation-list-details col-lg-1"><%= booking.number_of_guests %></td>
+			<td class="reservation-list-details col-lg-1"><%= booking.total_price %></td>
+			<td class="reservation-list-details col-lg-1"><%= booking.payment %></td>
+			<td class="reservation-list-details col-lg-2"><%= link_to 'Cancel Booking', user_listing_reservation_path(booking.user_id, booking.listing_id, booking.id), method: :delete, data: { confirm: "Do you want to delete this booking?"} %></td>
+			<% if booking.unpaid? %>
+				<td class="reservation-list-details col-lg-2"><%=link_to "Pay now", "/reservations/#{booking.id}/payment"%></td>
+			<% end %>	
+			<hr>
+		</tr>
+		<% end %>
+	</table>
+	<% end %>
+</div>	

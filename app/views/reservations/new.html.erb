@@ -1,0 +1,29 @@
+<%= render partial: '/layouts/navbar1' %>
+<p>Booking page</p>
+
+<p>Listing name:<%= @listing.listing_name %> </p>
+
+<p>Start date: <%= @reservation.start_date %></p>
+
+<p>End date: <%= @reservation.end_date %></p>
+
+
+
+
+
+
+<%= form_for @reservation, url: "/users/#{@reservation.user_id}/listings/#{@reservation.listing_id}/reservations", method: :post do |form| %>
+
+<%= form.hidden_field :start_date, value: @reservation.start_date %>
+<%= form.hidden_field :end_date, value: @reservation.end_date %>
+<%= form.hidden_field :number_of_guests, value: @reservation.number_of_guests %>
+<%= form.hidden_field :user_id, value: @reservation.user_id %>
+<%= form.hidden_field :listing_id, value: @reservation.listing_id %>
+
+
+<%= form.submit 'Confirm booking', class:"form-control"%>			
+
+<% end %>
+
+
+<%= link_to 'Cancel', "/users/#{@reservation.user_id}/listings/#{@reservation.listing_id}" %> 
