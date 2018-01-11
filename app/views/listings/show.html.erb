@@ -77,7 +77,7 @@
 
 
 
-		<div class="booking-container col-md-5 text-left">
+		<div class="body-narbar col-md-5 text-left">
 			<p><%= @listing.price %> per night</p>
 			<%= form_for @reservation, url: "/users/#{current_user.id}/listings/#{@listing.id}/reservations/new", method: :get do |form| %>
 
