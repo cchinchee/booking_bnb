@@ -2,7 +2,11 @@
 <%= render partial: '/layouts/navbar1' %>
 
 <div class="index-body">
-	<h3>Explore Booking BnB!</h3>
+	<% if params[:country] %>
+		<h3>Results for '<%= params[:country] %>'</h3>
+	<% else %>
+		<h3>Explore Booking BnB!</h3>
+	<% end %>
 </div>	
 	<%= render partial: '/layouts/product_grid' %>
 
