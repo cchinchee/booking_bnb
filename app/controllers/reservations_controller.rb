@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
 	before_action :require_login, only: [:new, :create, :destroy]
 	before_action :find_listing, only: [:new, :show, :edit, :destroy, :create]	
 	before_action :find_reservation, only: [:payment, :checkout]
+	before_action :check_email, only: [:create]
 
 	def new
 		@reservation = Reservation.new(reservation_params)
@@ -76,5 +77,11 @@ class ReservationsController < ApplicationController
 		params.require(:reservation).permit(:start_date, :end_date, :number_of_guests, :user_id, :listing_id)
 	end
 
+	def check_email
+		if current_user.email =~ /@zhuandaosha.com/
+			flash[:warning] = 'Your email is invalid, please provide a real email'
+			redirect_to edit_user_path 
+		end
+	end
 	
 end
